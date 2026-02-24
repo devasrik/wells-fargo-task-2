@@ -1,11 +1,14 @@
 package com.wellsfargo.counselor.entity;
 
-
-import jakarta.persistence.Column;
+//imported libraries many to one and local date 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Column;
+import jakarta.persistence.ManyToOne;
+import java.time.LocalDate;
 
+//this is for the security 
 @Entity
 public class Security {
 
@@ -35,6 +38,7 @@ public class Security {
 
     }
 
+    //added the arguments for the get and set functions
     public Security(String name, String category, LocalDate purchaseDate, double purchasePrice, int quantity, Portfolio portfolio) {
         this.name = name;
         this.category = category;
@@ -44,6 +48,7 @@ public class Security {
         this.portfolio = portfolio;
     }
 
+   //sets and gets
    public Long getSecurityId() {
         return securityId;
     }

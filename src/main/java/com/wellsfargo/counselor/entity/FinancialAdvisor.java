@@ -1,17 +1,20 @@
 package com.wellsfargo.counselor.entity;
 
-
-import jakarta.persistence.Column;
+//imported libraries added one to many and set 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Column;
+import jakarta.persistence.OneToMany;
+import java.util.Set;
 
+//this is the financial advisor 
 @Entity
 public class FinancialAdvisor {
 
     @Id
     @GeneratedValue()
-    private long advisorId;
+    private Long advisorId;
 
     @Column(nullable = false)
     private String firstName;
@@ -28,14 +31,15 @@ public class FinancialAdvisor {
     @Column(nullable = false)
     private String email;
 
-    @OnetoMany(mappedBy = "advisor")
+    @OneToMany(mappedBy = "advisor") // this is for the relation of advisor and client 
     private Set<Client> clients;
 
     protected FinancialAdvisor() {
 
     }
-
-    public FinancialAdvisor(String firstName, String lastName, String address, String phone, String email) {
+    
+    //added the arguments for the get and set functions 
+    public FinancialAdvisor(String firstName, String lastName, String address, String phone, String email, Set<Client> clients) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -44,6 +48,7 @@ public class FinancialAdvisor {
         this.clients = clients;
     }
 
+    //sets and gets
     public Long getAdvisorId() {
         return advisorId;
     }
